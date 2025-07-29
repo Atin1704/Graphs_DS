@@ -1,0 +1,70 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+
+
+class Solution {
+public:
+    int orangesRotting(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+        
+        // Count of fresh oranges
+        int fresh = 0;
+
+        // Queue to perform BFS: stores {{row, col}, time}
+        queue<pair<pair<int, int>, int>> q;
+
+        // Step 1: Collect initial rotten oranges and count fresh ones
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 2) {
+                    // Rotten orange → time 0
+                    q.push({{i, j}, 0});
+                } else if (grid[i][j] == 1) {
+                    // Fresh orange
+                    fresh++;
+                }
+            }
+        }
+
+        // Step 2: Run BFS to rot the fresh oranges
+        int time = 0; // track the time taken
+        vector<pair<int, int>> dirs = {{-1,0},{1,0},{0,-1},{0,1}}; // up, down, left, right
+
+        while (!q.empty()) {
+            auto front = q.front();
+            q.pop();
+            int row = front.first.first;
+            int col = front.first.second;
+            int t = front.second;
+
+            time = max(time, t); // update the max time
+
+            for (auto dir : dirs) {
+                int new_r = row + dir.first;
+                int new_c = col + dir.second;
+
+                // If it's a fresh orange in bounds, rot it
+                if (new_r >= 0 && new_r < m && new_c >= 0 && new_c < n && grid[new_r][new_c] == 1) {
+                    grid[new_r][new_c] = 2; // rot the orange
+                    fresh--; // one less fresh orange now
+                    q.push({{new_r, new_c}, t + 1}); // process it next with incremented time
+                }
+            }
+        }
+
+        // Step 3: If all fresh oranges are rotted, return time; else return -1
+        if (fresh == 0) return time;
+        return -1;
+    }
+};
+
+
+//link-https://leetcode.com/problems/rotting-oranges/submissions/1716252352/
+
+//hints to do multisource bfs
+//bfs represented by minimum time
+//multiosurce represneted by mutiple oranges left
