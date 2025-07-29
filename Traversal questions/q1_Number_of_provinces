@@ -1,0 +1,86 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+
+
+
+class Solution {
+public:
+
+
+
+    void dfs(const vector<vector<int>>& adj,int node,vector<bool> &visited){
+        visited[node]=true;
+        for(int i=0;i<adj[node].size();i++){
+            if(adj[node][i]==1&&(!visited[i])){
+                dfs(adj,i,visited);
+            }
+        }
+    }
+
+
+
+
+
+
+    int findCircleNum(vector<vector<int>>& adj) {
+        int nodes=adj.size();
+        vector<bool>visited(nodes,false);
+        int count=0;
+        for(int i=0;i<nodes;i++){
+            if(!visited[i]){
+                dfs(adj,i,visited);
+                count++;
+            }
+        }
+        return count;
+        
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//link-https://leetcode.com/problems/number-of-provinces/description/
+
+/*
+🧠 Problem Intuition:
+
+The problem is essentially about finding the number of connected components in an undirected graph, where:
+	•	Each city is a node.
+	•	A direct connection between two cities is an edge.
+	•	A province is a group of cities that are directly or indirectly connected.
+
+⸻
+
+🧩 Simplified Insight:
+
+Every time we perform a BFS or DFS, we explore one entire connected component (province).
+
+So, the number of times we need to start a new DFS/BFS from an unvisited node = the number of provinces.
+
+⸻
+
+🔁 Visualize Like This:
+	•	Start from city 0 → DFS explores all cities connected to it → mark them visited.
+	•	Move to next unvisited city → start another DFS.
+	•	Repeat until all cities are visited.
+	•	Each new DFS = 1 new province. */
