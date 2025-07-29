@@ -1,0 +1,48 @@
+✅ Depth First Search (DFS) – Explained
+
+⸻
+
+🔍 What is DFS?
+	•	DFS explores the graph depth-wise, meaning it tries to go as deep as possible along each branch before backtracking.
+	•	It’s like going down a hallway and taking every left turn until you hit a wall — then you backtrack and try the next option.
+
+⸻
+
+📏 DFS vs BFS
+	•	BFS (Breadth First Search) explores level-by-level.
+	•	DFS explores deepest paths first.
+	•	For example, in a tree:
+	•	DFS will reach the leaf nodes quickly.
+	•	BFS will visit all nodes at a level before going deeper.
+
+⸻
+
+🧠 How DFS Works
+	•	Uses a recursive approach or an explicit stack.
+	•	Requires a visited array to prevent cycles or re-visits.
+	•	In recursive DFS:
+	•	You visit the current node.
+	•	Then recursively visit all its unvisited neighbors.
+
+⸻
+
+🧰 Why Use DFS?
+	•	Great for:
+	•	Detecting cycles
+	•	Finding connected components
+	•	Solving mazes
+	•	Tree-based problems (e.g., finding height, leaf nodes, etc.)
+	•	Often used in problems involving backtracking, like:
+	•	Solving Sudoku
+	•	Generating permutations
+
+⸻
+
+🕒 Time Complexity of DFS
+	•	O(V + E) where:
+	•	V is the number of vertices
+	•	E is the number of edges
+	•	Each node is visited once.
+	•	Each edge is considered once (in undirected graphs, twice — once from each end — but still O(E)).
+
+

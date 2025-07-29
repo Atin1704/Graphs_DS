@@ -15,3 +15,19 @@ It travels breadth-wise — we explore all immediate neighbors before moving dee
 - O(V + E)
 - Each node is visited once.
 - Each edge is checked at most twice (in undirected graphs).
+
+-If in bfs you want to print levelwise, you can the technique 
+-of storing -1 after a Level
+
+-another more elegnat way is to do bfs for all levels at one loop inside
+-like track the size
+-pop those many elements nad do their bfs
+
+
+-another interesting property
+-bfs helps find the shortest path between a starting node and destination node
+-this is true for a undirected and directed graph
+-edges should have the same weight
+-why as it explores breadth first
+-it doesnt search for deep path
+-it searches for nearest neighbours from a node first
