@@ -1,0 +1,22 @@
+Connected Components in a Graph
+
+A connected component is a subgraph in which:
+	•	Every node is reachable from every other node within that component.
+	•	There is no edge connecting nodes in different components.
+
+⸻
+
+Key Characteristics:
+	•	The graph is divided into multiple smaller graphs called connected components.
+	•	Nodes within a component are connected directly or indirectly through edges.
+	•	There are no connections between separate components.
+
+⸻
+
+Traversal Implication:
+	•	You cannot assume that starting DFS or BFS from one node will cover all nodes in the graph if the graph has multiple components.
+	•	To handle this:
+	•	Maintain a visited array or set.
+	•	Iterate through all nodes.
+	•	For each unvisited node, run a traversal (DFS or BFS).
+	•	Each traversal will cover one entire connected component.

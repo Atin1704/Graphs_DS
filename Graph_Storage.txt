@@ -1,0 +1,46 @@
+Graph Storage
+
+1. Adjacency Matrix
+	•	A 2D array (matrix) of size n × n, where n is the number of nodes.
+	•	Each cell (i, j) in the matrix is:
+	•	1 if there is an edge from node i to node j
+	•	0 otherwise
+
+Characteristics:
+	•	Space Complexity: O(n²)
+	•	Works well for dense graphs
+
+Behavior:
+	•	Undirected Graph:
+If an edge exists between nodes 1 and 2, mark both (1, 2) and (2, 1) as 1.
+	•	Directed Graph:
+If an edge exists from node 1 to node 2, mark only (1, 2) as 1.
+
+⸻
+
+2. Adjacency List
+	•	Each node maintains a list of its adjacent (connected) nodes.
+	•	Efficient for storing sparse graphs
+
+Characteristics:
+	•	Space Complexity: O(n + e)
+where n is the number of nodes and e is the number of edges
+
+Behavior:
+	•	Undirected Graph:
+If there is an edge between nodes 1 and 2:
+	•	Add 2 to the list of 1
+	•	Add 1 to the list of 2
+	•	Directed Graph:
+If there is an edge from node 1 to node 2:
+	•	Add 2 to the list of 1 only
+
+
+
+
+
+Adjacency list is better for sparse graph
+Ajacency matrix is better for dense graphs
+
+Adjacency list has O(deg(u)) lookup;
+Adjacency matrix has O(1) lookup;

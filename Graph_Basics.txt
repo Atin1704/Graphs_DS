@@ -1,0 +1,64 @@
+Graphs – Basics
+
+What is a Graph?
+
+A graph is a collection of:
+	•	Nodes (also called vertices)
+	•	Edges (lines connecting pairs of nodes)
+
+Minimum Condition for a Graph to Exist
+	•	A graph must have at least one node.
+
+⸻
+
+Types of Edges
+	1.	Directed Edge
+	•	Represented with an arrow
+	•	Allows one-way traversal
+	•	Example: A → B (can go from A to B only)
+	2.	Undirected Edge
+	•	No arrow
+	•	Allows two-way traversal
+	•	Example: A — B (can go from A to B and B to A)
+
+⸻
+
+Example
+	•	A tree is also a graph.
+It is a connected, acyclic graph.
+
+⸻
+
+Cycles in a Graph
+
+What is a Cycle?
+
+A cycle exists when:
+	•	You start at a node
+	•	Traverse through one or more distinct nodes
+	•	And return to the starting node
+
+Note:
+	•	At least one distinct node must be present between start and end.
+	•	A direct self-loop does not count as a valid cycle in simple graphs.
+
+⸻
+
+Paths in a Graph
+	•	A path is a sequence of nodes connected by edges.
+	•	Adjacent nodes in the path must be joined by a valid edge.
+	•	A path starts at one node and ends at another (or the same node, in the case of a cycle).
+
+⸻
+
+Degree of a Node
+
+In an Undirected Graph:
+	•	The degree of a node is the number of edges connected to it.
+	•	Total degree of the graph = 2 × (number of edges)
+
+In a Directed Graph:
+	•	In-degree: Number of edges pointing to a node
+	•	Out-degree: Number of edges pointing out from a node
+	•	For the entire graph:
+    .   Sum of all in-degrees + sum of all out-degrees = 2 × (number of edges)
