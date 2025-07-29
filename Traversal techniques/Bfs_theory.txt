@@ -1,0 +1,17 @@
+Breadth First Search (BFS)
+
+BFS explores the graph level by level, starting from a source node:
+- The starting node is at Level 0.
+- Nodes at one edge distance are at Level 1.
+- Nodes at two edge distance are at Level 2, and so on.
+
+It travels breadth-wise — we explore all immediate neighbors before moving deeper.
+
+📌 Uses:
+- A queue (FIFO) to ensure nodes visited first are processed first.
+- A visited array to prevent revisiting nodes.
+
+⏱️ Time Complexity:
+- O(V + E)
+- Each node is visited once.
+- Each edge is checked at most twice (in undirected graphs).
