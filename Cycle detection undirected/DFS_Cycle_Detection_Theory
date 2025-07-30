@@ -1,0 +1,9 @@
+Cycle Detection in Undirected Graph using DFS – Concept
+
+DFS explores one path as deep as possible before backtracking.
+During this traversal, if we encounter a node that has already been visited and is not the immediate parent of the current node, it indicates a cycle.
+
+The reasoning is:
+	•	DFS explores paths fully before moving to another branch.
+	•	If during this process, a node connects to a previously visited node (other than its parent), it means there is an alternate path to reach that node — this implies a cycle.
+	•	Since all DFS calls originate from a connected node, this connection to an already visited part of the graph confirms that a loop exists.
