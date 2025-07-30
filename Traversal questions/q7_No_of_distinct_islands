@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <set>
+using namespace std;
+
+
+class Solution {
+  public:
+    void dfs(int i, int j, vector<vector<int>>& grid, string &path) {
+        int m = grid.size(), n = grid[0].size();
+        grid[i][j] = -1;  // mark visited
+
+        vector<pair<int, int>> dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        vector<char> labels = {'U', 'D', 'L', 'R'};
+
+        for (int d = 0; d < 4; ++d) {
+            int ni = i + dirs[d].first;
+            int nj = j + dirs[d].second;
+
+            if (ni >= 0 && ni < m && nj >= 0 && nj < n && grid[ni][nj] == 1) {
+                path += labels[d];       // move direction
+                dfs(ni, nj, grid, path); // explore
+            }
+        }
+
+        path += 'B';  // backtrack marker after full exploration
+    }
+
+    int countDistinctIslands(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        set<string> shapes;
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 1) {
+                    string path;
+                    dfs(i, j, grid, path);
+                    shapes.insert(path);
+                }
+            }
+        }
+
+        return shapes.size();
+    }
+};
+
+
+//link-https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1
