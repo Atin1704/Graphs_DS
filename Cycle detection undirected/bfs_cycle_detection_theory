@@ -1,0 +1,14 @@
+Cycle Detection in Undirected Graph using BFS – Concept
+
+The core idea is:
+
+If, during BFS traversal, we encounter a node that is already visited and is not the immediate parent of the current node, then a cycle exists.
+
+Let’s understand why:
+	•	In a BFS traversal, we explore the graph level by level, effectively expanding outward from the starting node.
+	•	In an acyclic graph, each node is visited from exactly one direction, and no cross-level connections (except the direct parent-child) are expected.
+	•	If we encounter a situation where a node at level L connects back to another node at level L or L - 1 (but not its parent), it implies there’s an alternate path — indicating a cycle.
+
+Think of it this way:
+	•	BFS assumes each level grows “downward.”
+	•	If there’s a “sideways” or “backward” connection that doesn’t go through the parent, it implies two different paths exist between the same pair of nodes — which is the definition of a cycle.
