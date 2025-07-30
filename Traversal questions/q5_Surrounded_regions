@@ -1,0 +1,52 @@
+
+
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+class Solution {
+public:
+    void dfs(int i, int j, vector<vector<char>>& board) {
+        int m = board.size(), n = board[0].size();
+        if (i < 0 || i >= m || j < 0 || j >= n || board[i][j] != 'O') return;
+        board[i][j] = 'Y';  // Temporarily mark as safe
+        dfs(i+1, j, board);
+        dfs(i-1, j, board);
+        dfs(i, j+1, board);
+        dfs(i, j-1, board);
+    }
+
+    void solve(vector<vector<char>>& board) {
+        int m = board.size(), n = board[0].size();
+        if (m == 0 || n == 0) return;
+
+        // Step 1: Start from boundary and mark all 'O's connected to boundary as 'Y'
+        for (int i = 0; i < m; i++) {
+            if (board[i][0] == 'O') dfs(i, 0, board);
+            if (board[i][n-1] == 'O') dfs(i, n-1, board);
+        }
+        for (int j = 0; j < n; j++) {
+            if (board[0][j] == 'O') dfs(0, j, board);
+            if (board[m-1][j] == 'O') dfs(m-1, j, board);
+        }
+
+        // Step 2: Flip all remaining 'O's to 'X', and revert 'Y' back to 'O'
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'O') board[i][j] = 'X';
+                else if (board[i][j] == 'Y') board[i][j] = 'O';
+            }
+        }
+    }
+};
+
+
+//link-https://leetcode.com/problems/surrounded-regions/
+
+
+//the logic is that all region of o's that is surrounded by x's on all sides will be a captured regio
+//so basiucally if this is the logic then there should be some o's on the boundary
+//else all o's ae contained iwthin x's on all sides and hence captured regions
+//hence to find region that arent captured need to mark all os cell connected by a path of o's to 
+//a boundary o cell
