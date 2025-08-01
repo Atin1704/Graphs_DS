@@ -1,0 +1,5 @@
+A bipartite graph is a graph whose nodes can be divided into two sets A and B 
+in which we find no edge between nodes belonging to the same sets
+Only nodes from A to b or B to A are allowed
+even number of cycles and acyclic graphs are bipartite
+to find whether. agraph is bipartite or not we approach its as a coloring problem

@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+
+
+bool dfs(const vector<vector<int>> &adj, int node, vector<int> &color,int parent_color) {
+    if(parent_color==1){
+        color[node]=0;
+    }
+    else{
+        color[node]=1;
+    }
+    for(int x:adj[node]){
+        if(color[x]!=-1&&color[x]!=color[node]){
+            continue;
+        }
+        else if(color[x]==-1){
+            if(!dfs(adj,x,color,color[node])){
+                return false;
+
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    return true;
+}

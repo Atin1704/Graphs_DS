@@ -1,0 +1,30 @@
+
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+
+
+bool bfs(const vector<vector<int>> &adj, int start, vector<int> &color) {
+    queue<int> q;
+    color[start] = 0;  // You can start with either 0 or 1
+    q.push(start);
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+
+        for (int neighbor : adj[node]) {
+            if (color[neighbor] == -1) {
+                // Not visited => assign opposite color
+                color[neighbor] = 1 - color[node];
+                q.push(neighbor);
+            } else if (color[neighbor] == color[node]) {
+                // Conflict => same color on both sides
+                return false;
+            }
+        }
+    }
+    return true;
+}
